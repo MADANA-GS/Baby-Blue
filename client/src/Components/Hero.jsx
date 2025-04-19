@@ -26,13 +26,13 @@ const Hero = () => {
       {/* New Arrival Banner with center to complete left animation */}
       <div className="w-full bg-black text-white md:py-3 py-1 relative overflow-hidden">
         <motion.div
-          className="font-serif text-lg md:text-xl z-10 text-center w-full"
+          className="albert-sans text-lg md:text-xl z-10 text-center w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
           <motion.span
-            className="inline-block"
+            className="inline-block prata-regular "
             initial={{ x: 0 }}
             transition={{ delay: 0.8, duration: 0.7 }}
           >

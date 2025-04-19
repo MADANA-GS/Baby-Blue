@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Prata&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Prata&display=swap");
 @tailwind base;
 
 @tailwind components;
@@ -12,6 +12,12 @@
   font-family: Outfit;
 }
 
+.albert-sans {
+  font-family: "Albert Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 .prata-regular {
   font-family: "Prata", serif;
   font-weight: 400;
@@ -24,7 +30,6 @@
     color: white;
   }
 }
-
 
 /* ::-webkit-scrollbar {
   display: none;
