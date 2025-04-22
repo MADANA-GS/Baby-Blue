@@ -163,8 +163,8 @@ const Hero = () => {
           {/* Shop Now button with updated hover animation */}
           <motion.button
             className="group bg-white hover:bg-black hover:text-white transition-all duration-300 px-4 sm:px-5 py-2 sm:py-3 flex items-center gap-2 sm:gap-3 rounded-full text-xs sm:text-sm shadow-md"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
