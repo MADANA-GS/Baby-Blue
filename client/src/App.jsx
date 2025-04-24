@@ -1,16 +1,18 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Title from "./Components/Title";
 import CategoryCard from "./Components/CategoryCard";
 import ItemsDiv from "./Components/ItemsDiv";
-import ProductCard from "./Components/ProductCard";
-import ProductDiv from "./Components/ProductDiv";
 
 import luffy from "./assets/luffy.png";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
+// ✅ Lazy load heavy components
+const ProductCard = lazy(() => import("./Components/ProductCard"));
+const ProductDiv = lazy(() => import("./Components/ProductDiv"));
+const TrustCard = lazy(() => import("./Components/TrustCard"));
 const App = () => {
   const categories = [
     {
@@ -42,7 +44,7 @@ const App = () => {
       title: "Blue Jacket",
       originalPrice: "120",
       discountPrice: "89",
-      image:  luffy ,
+      image: luffy,
     },
     {
       title: "Sneakers",
@@ -70,8 +72,10 @@ const App = () => {
     <div className="px-4 sm:px-[6vw] md:px-[7vw] lg:px-[9vw] xl:px-[12vw] 2xl:px-[15vw] ">
       <Navbar />
       <Hero />
-      {/* Categories */}
-      <AnimatePresence>
+
+      {/* Lazy-wrapped content */}
+      <Suspense fallback={<div>Loading sections...</div>}>
+        {/* Categories */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +86,8 @@ const App = () => {
           <Title text1={"Categories"} text2={"Our collections"} />
           <ItemsDiv CardComponents={CategoryCard} items={categories} />
         </motion.div>
-        {/* Feautured Products */}
+
+        {/* Featured Products */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +96,6 @@ const App = () => {
           className="md:mb-28 sm:mb-14 mb-10"
         >
           <Title text1={"Exclusive Finds"} text2={"Featured Products"} />
-
           <ProductDiv
             CardComponents={ProductCard}
             gender={"Men"}
@@ -103,7 +107,8 @@ const App = () => {
             items={products}
           />
         </motion.div>
-        {/*  */}
+
+        {/* Trending Products */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +117,6 @@ const App = () => {
           className="md:mb-28 sm:mb-14 mb-10"
         >
           <Title text1={"Now trending"} text2={"Latest Products"} />
-
           <ProductDiv
             CardComponents={ProductCard}
             gender={"Men"}
@@ -124,7 +128,10 @@ const App = () => {
             items={products}
           />
         </motion.div>
-      </AnimatePresence>
+
+        {/* Trust Section */}
+        <TrustCard />
+      </Suspense>
     </div>
   );
 };

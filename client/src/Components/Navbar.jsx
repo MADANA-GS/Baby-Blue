@@ -24,7 +24,7 @@ const Navbar = () => {
         className="w-40  h-12 mt-2 cursor-pointer   items-center flex "
         to="/"
       >
-        <img src={image} className="w-full bg-red-700  object-contain" alt="" />
+        <img  loading="lazy" src={image} className="w-full   object-contain" alt="" />
       </Link>
 
       <div className=" items-center md:flex hidden justify-center gap-8">
@@ -64,11 +64,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center justify-center gap-4 md:gap-7">
-        <img src={search} className="w-6" alt="" />
-        <img src={account} className="w-6" alt="" />
+        <img  loading="lazy" src={search} className="w-6" alt="" />
+        <img  loading="lazy" src={account} className="w-6" alt="" />
 
         <Link to="/cart" className="w-6 flex relative cursor-pointer">
-          <img src={cart} className=" w-full h-full" alt="" />
+          <img  loading="lazy" src={cart} className=" w-full h-full" alt="" />
           <div className="absolute top-2.5 -right-0.5 text-[12px] flex items-center justify-center text-center text-white w-4 h-4 bg-black rounded-full">
             <p className="mx-auto my-auto">10</p>
           </div>
@@ -83,13 +83,13 @@ const Navbar = () => {
             className="animate-[pop_0.2s_ease-out] w-full h-full flex items-center justify-center"
           >
             {open ? (
-              <img
+              <img  loading="lazy"
                 src={cross}
                 className="w-full object-contain scale-110"
                 alt=""
               />
             ) : (
-              <img src={menu} className="w-6 object-contain" alt="" />
+              <img  loading="lazy" src={menu} className="w-6 object-contain" alt="" />
             )}
           </div>
         </div>

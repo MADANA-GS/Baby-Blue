@@ -5,6 +5,7 @@ const ProductCard = ({ image, title, originalPrice, discountPrice }) => {
     <div className="w-full flex-col mb-3">
       <div className="relative overflow-hidden rounded-sm aspect-[3/4] md:aspect-[4/5]">
         <img
+         loading="lazy"
           src={image}
           alt={title}
           className="object-cover hover:scale-110 ease-in-out transition-all duration-700 w-full h-full

@@ -7,6 +7,7 @@ const CategoryCard = ({ image, title }) => {
         <img
           src={image}
           alt={title}
+          loading="lazy"
           className="object-cover hover:scale-110 ease-in-out transition-all duration-700 w-full h-full"
         />
         <p className="absolute md:block hidden bottom-4 left-4 bg-white text-black px-3 py-1 text-sm font-medium shadow-md">

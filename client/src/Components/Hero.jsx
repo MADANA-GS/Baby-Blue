@@ -54,6 +54,7 @@ const Hero = () => {
         <div className="w-full">
           <motion.img
             src={hero}
+             loading="lazy"
             className="w-full h-full object-cover md:object-contain lg:object-cover object-center"
             alt="BabyBlue collection showcase"
             initial={{ scale: 1.05 }}
@@ -94,16 +95,19 @@ const Hero = () => {
               <div className="flex -space-x-2 ">
                 <img
                   src={hero}
+                   loading="lazy"
                   alt="Customer 1"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover"
                 />
                 <img
                   src={hero}
+                   loading="lazy"
                   alt="Customer 2"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover"
                 />
                 <img
                   src={hero}
+                   loading="lazy"
                   alt="Customer 3"
                   className="w-8 h-8 rounded-full border-2 border-white object-cover"
                 />
