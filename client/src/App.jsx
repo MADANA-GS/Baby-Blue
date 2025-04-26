@@ -1,137 +1,39 @@
-import React, { Suspense, lazy } from "react";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Hero from "./Components/Hero";
-import Title from "./Components/Title";
-import CategoryCard from "./Components/CategoryCard";
-import ItemsDiv from "./Components/ItemsDiv";
 
-import luffy from "./assets/luffy.png";
-
-import { motion } from "framer-motion";
+import HomePage from "./Pages/HomePage";
+import Footer from "./Components/Footer";
+import Collections from "./Pages/Collections";
+// import ProductCard from "./Components/ProductCard";
+import Products from "./Pages/Products";
+import Product from "./Pages/Product";
+import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
+import OrderConfirmation from "./Pages/OrderConfirmation";
+import Orders from "./Pages/Orders";
+// import BrowseCategory from "./Helper/BrowseCategory";
 
 // ✅ Lazy load heavy components
-const ProductCard = lazy(() => import("./Components/ProductCard"));
-const ProductDiv = lazy(() => import("./Components/ProductDiv"));
-const TrustCard = lazy(() => import("./Components/TrustCard"));
+
 const App = () => {
-  const categories = [
-    {
-      title: "Men",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-
-    {
-      title: "Men",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-
-    {
-      title: "Men",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-
-    {
-      title: "Men",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-  ];
-  const products = [
-    {
-      title: "Blue Jacket",
-      originalPrice: "120",
-      discountPrice: "89",
-      image: luffy,
-    },
-    {
-      title: "Sneakers",
-      originalPrice: "120",
-      discountPrice: "89",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-    {
-      title: "Blue Jacket",
-      originalPrice: "120",
-      discountPrice: "89",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-    {
-      title: "Sneakers",
-      originalPrice: "120",
-      discountPrice: "89",
-      image:
-        "https://cdn.prod.website-files.com/67b017470cb9f27876f6a2f1/67b0298bcb9d879ac7d60ea7_categories-06.jpg",
-    },
-  ];
   return (
     <div className="px-4 sm:px-[6vw] md:px-[7vw] lg:px-[9vw] xl:px-[12vw] 2xl:px-[15vw] ">
       <Navbar />
-      <Hero />
-
-      {/* Lazy-wrapped content */}
-      <Suspense fallback={<div>Loading sections...</div>}>
-        {/* Categories */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="md:mb-28 sm:mb-14 mb-10"
-        >
-          <Title text1={"Categories"} text2={"Our collections"} />
-          <ItemsDiv CardComponents={CategoryCard} items={categories} />
-        </motion.div>
-
-        {/* Featured Products */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="md:mb-28 sm:mb-14 mb-10"
-        >
-          <Title text1={"Exclusive Finds"} text2={"Featured Products"} />
-          <ProductDiv
-            CardComponents={ProductCard}
-            gender={"Men"}
-            items={products}
-          />
-          <ProductDiv
-            CardComponents={ProductCard}
-            gender={"Women"}
-            items={products}
-          />
-        </motion.div>
-
-        {/* Trending Products */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="md:mb-28 sm:mb-14 mb-10"
-        >
-          <Title text1={"Now trending"} text2={"Latest Products"} />
-          <ProductDiv
-            CardComponents={ProductCard}
-            gender={"Men"}
-            items={products}
-          />
-          <ProductDiv
-            CardComponents={ProductCard}
-            gender={"Women"}
-            items={products}
-          />
-        </motion.div>
-
-        {/* Trust Section */}
-        <TrustCard />
-      </Suspense>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/products/:cat" element={<Products />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/order-confirmation/:orderId"
+          element={<OrderConfirmation />}
+        />
+        <Route path="/orders" element={<Orders />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };

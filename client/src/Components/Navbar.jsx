@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import image from "../assets/BlueBaby.png";
@@ -7,24 +7,33 @@ import search from "../assets/search.png";
 import account from "../assets/account.png";
 import menu from "../assets/menu.png";
 import cross from "../assets/cross.png";
+import { AllContext } from "../Context/AllContext";
 
 const Navbar = () => {
   const [hoverIndex, setHoverIndex] = useState(null);
   const [open, setOpen] = useState(false);
+  const { cartLength } = useContext(AllContext);
   const links = [
+    { path: "/products/all", name: "Shop" },
     { path: "/collections", name: "Collections" },
     { path: "/about", name: "About" },
     { path: "/contact", name: "Contact" },
     { path: "/login", name: "Login" },
+    { path: "/orders", name: "Orders" },
   ];
   return (
     <div className="flex relative items-center justify-between font-medium py-1">
       <Link
         onClick={() => setOpen(false)}
-        className="w-40  h-12 mt-2 cursor-pointer   items-center flex "
+        className="w-40 overflow-hidden h-12 mt-2 cursor-pointer   items-center flex "
         to="/"
       >
-        <img  loading="lazy" src={image} className="w-full   object-contain" alt="" />
+        <img
+          loading="lazy"
+          src={image}
+          className="w-full   object-contain"
+          alt=""
+        />
       </Link>
 
       <div className=" items-center md:flex hidden justify-center gap-8">
@@ -64,13 +73,13 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center justify-center gap-4 md:gap-7">
-        <img  loading="lazy" src={search} className="w-6" alt="" />
-        <img  loading="lazy" src={account} className="w-6" alt="" />
+        <img loading="lazy" src={search} className="w-6" alt="" />
+        <img loading="lazy" src={account} className="w-6" alt="" />
 
         <Link to="/cart" className="w-6 flex relative cursor-pointer">
-          <img  loading="lazy" src={cart} className=" w-full h-full" alt="" />
+          <img loading="lazy" src={cart} className=" w-full h-full" alt="" />
           <div className="absolute top-2.5 -right-0.5 text-[12px] flex items-center justify-center text-center text-white w-4 h-4 bg-black rounded-full">
-            <p className="mx-auto my-auto">10</p>
+            <p className="mx-auto my-auto">{cartLength}</p>
           </div>
         </Link>
 
@@ -83,13 +92,19 @@ const Navbar = () => {
             className="animate-[pop_0.2s_ease-out] w-full h-full flex items-center justify-center"
           >
             {open ? (
-              <img  loading="lazy"
+              <img
+                loading="lazy"
                 src={cross}
                 className="w-full object-contain scale-110"
                 alt=""
               />
             ) : (
-              <img  loading="lazy" src={menu} className="w-6 object-contain" alt="" />
+              <img
+                loading="lazy"
+                src={menu}
+                className="w-6 object-contain"
+                alt=""
+              />
             )}
           </div>
         </div>
@@ -100,6 +115,13 @@ const Navbar = () => {
           open ? "max-h-60" : "max-h-0"
         } overflow-hidden transition-all duration-300 top-16 absolute`}
       >
+        <NavLink
+          to={"/products/all"}
+          onClick={() => setOpen(!open)}
+          className="border border-1 text-start uppercase font-medium px-3 py-2"
+        >
+          Shop
+        </NavLink>
         <NavLink
           to={"/collections"}
           onClick={() => setOpen(!open)}
@@ -120,6 +142,13 @@ const Navbar = () => {
           className="border text-start uppercase font-medium  px-3 py-2"
         >
           Contact
+        </NavLink>
+        <NavLink
+          to={"/orders"}
+          onClick={() => setOpen(!open)}
+          className="border text-start uppercase font-medium  px-3 py-2"
+        >
+          Orders
         </NavLink>
         <NavLink
           to={"/login"}
