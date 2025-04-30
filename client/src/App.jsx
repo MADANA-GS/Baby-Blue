@@ -12,6 +12,8 @@ import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
 import OrderConfirmation from "./Pages/OrderConfirmation";
 import Orders from "./Pages/Orders";
+import TShirtDesigner from "./Components/TShirtDesigner";
+import Login from "./Pages/Login";
 // import BrowseCategory from "./Helper/BrowseCategory";
 
 // ✅ Lazy load heavy components
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/design" element={<TShirtDesigner />} />
+        <Route path="/login" element={<Login />} />
         <Route
           path="/order-confirmation/:orderId"
           element={<OrderConfirmation />}

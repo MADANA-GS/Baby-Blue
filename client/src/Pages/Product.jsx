@@ -18,7 +18,7 @@ const Product = () => {
   const [productComments, setProductComments] = useState([]);
   const [error, setError] = useState("");
   const [addedToCart, setAddedToCart] = useState(false);
-  
+
   // Use a ref to store the timer ID
   const successTimeoutRef = useRef(null);
 
@@ -91,24 +91,24 @@ const Product = () => {
       clearTimeout(successTimeoutRef.current);
       successTimeoutRef.current = null;
     }
-    
+
     // Clear any previous success state immediately
     setAddedToCart(false);
-    
+
     // Validate selection
     if (!selectedSize) {
       setError("Please select a size");
       return;
     }
-    
+
     if (quantity <= 0) {
       setError("Please select a valid quantity");
       return;
     }
-    
+
     // Clear any existing errors
     setError("");
-    
+
     // Create cart item with both price data
     const cartItem = {
       id: product.id,
@@ -117,18 +117,18 @@ const Product = () => {
       price: product.discountPrice,
       image: product.image,
       quantity: quantity,
-      size: selectedSize
+      size: selectedSize,
     };
-    
+
     // Add to cart using context function
     addToCart(cartItem);
-    
+
     // Delay slightly to ensure state updates before showing message
     // This helps ensure the UI can properly process the state change
     setTimeout(() => {
       // Show success message
       setAddedToCart(true);
-      
+
       // Set timeout to hide message after 5 seconds
       successTimeoutRef.current = setTimeout(() => {
         setAddedToCart(false);
@@ -296,31 +296,35 @@ const Product = () => {
             {addedToCart && (
               <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded shadow-md">
                 <div className="flex items-center">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-6 w-6 mr-2 text-green-500" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mr-2 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M5 13l4 4L19 7" 
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <p className="font-medium">Item added to your cart successfully!</p>
+                  <p className="font-medium">
+                    Item added to your cart successfully!
+                  </p>
                 </div>
               </div>
             )}
 
             {/* Error message for non-size/quantity specific errors */}
-            {error && !error.includes("size") && !error.includes("quantity") && (
-              <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow-md">
-                <p>{error}</p>
-              </div>
-            )}
+            {error &&
+              !error.includes("size") &&
+              !error.includes("quantity") && (
+                <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded shadow-md">
+                  <p>{error}</p>
+                </div>
+              )}
 
             {/* Quantity and Add to Cart */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
@@ -337,12 +341,13 @@ const Product = () => {
                   <p className="text-red-500 text-sm mt-1">{error}</p>
                 )}
               </div>
-              <button 
+              <button
                 onClick={handleAddToCart}
                 className="w-full sm:w-auto bg-white border hover:bg-black hover:text-white transition-all duration-300 border-gray-300 rounded-full text-black py-2 px-6 flex items-center justify-center gap-2"
               >
                 Add to Cart
                 <svg
+                  onClick={handleAddToCart}
                   xmlns="http://www.w3.org/2000/svg"
                   width="18"
                   height="18"
@@ -363,21 +368,25 @@ const Product = () => {
 
             <div className="border-t flex flex-col gap-4 border-gray-200 py-4 mb-4">
               <div className="flex items-start">
-                <span className="font-medium w-24 flex-shrink-0">Description:</span>
-                <p className="text-[#333333]">
-                  {product.shortDescription}
-                </p>
+                <span className="font-medium w-24 flex-shrink-0">
+                  Description:
+                </span>
+                <p className="text-[#333333]">{product.shortDescription}</p>
               </div>
               <div className="flex items-start">
                 <span className="font-medium w-24 flex-shrink-0">SKU:</span>
                 <p className="text-[#333333]">{product.id}</p>
               </div>
               <div className="flex items-start">
-                <span className="font-medium w-24 flex-shrink-0">Category:</span>
+                <span className="font-medium w-24 flex-shrink-0">
+                  Category:
+                </span>
                 <p className="text-[#333333]">{product.category}</p>
               </div>
               <div className="flex items-start">
-                <span className="font-medium w-24 flex-shrink-0">Sub Category:</span>
+                <span className="font-medium w-24 flex-shrink-0">
+                  Sub Category:
+                </span>
                 <p className="text-[#333333]">{product.subcategory}</p>
               </div>
             </div>
@@ -488,7 +497,7 @@ const Product = () => {
           currentUser={{
             id: "current-user",
             name: "You",
-            avatar: "https://via.placeholder.com/40"
+            avatar: "https://via.placeholder.com/40",
           }}
         />
       </div>
@@ -498,7 +507,9 @@ const Product = () => {
         <ItemsDiv
           CardComponents={ProductCard}
           items={products
-            .filter((p) => p.category === product.category && p.id !== product.id)
+            .filter(
+              (p) => p.category === product.category && p.id !== product.id
+            )
             .slice(0, 6)}
         />
       </div>

@@ -14,7 +14,7 @@ const ProductCard = ({ image, id, title, originalPrice, discountPrice }) => {
         />
       </div>
       <div className="flex font-[350] flex-col ">
-        <p className="mt-1 text-xl md:text-xl">{title}</p>
+        <p className="mt-1 text-lg md:text-lg">{title}</p>
         <p className="flex font-[300] text-gray-700 items-start text-base mt-1  gap-2">
           ${discountPrice} <span className="line-through">{originalPrice}</span>
         </p>

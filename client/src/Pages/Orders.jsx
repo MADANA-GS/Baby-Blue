@@ -7,7 +7,7 @@ const Orders = () => {
   const { orders } = useContext(AllContext);
 
   return (
-    <div className="container mx-auto py-8  bg-gray-50">
+    <div className="container mx-auto py-8  w-full bg-gray-50">
       <div className="mx-auto">
         <Title text1="Your" text2="Orders" />
 

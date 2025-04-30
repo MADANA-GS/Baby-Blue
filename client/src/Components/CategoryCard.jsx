@@ -15,7 +15,7 @@ const CategoryCard = ({ image, title }) => {
           {title}
         </p>
       </div>
-      <p className="mt-1 ml-1.5 text-xl md:hidden">{title}</p>
+      <p className="mt-1 ml-1.5 text-lg md:hidden">{title}</p>
     </Link>
   );
 };

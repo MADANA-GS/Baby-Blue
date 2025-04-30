@@ -36,7 +36,7 @@ const Navbar = () => {
         />
       </Link>
 
-      <div className=" items-center md:flex hidden justify-center gap-8">
+      <div className=" items-center lg:flex hidden justify-center gap-8">
         <div className="flex  items-center nav justify-between gap-6">
           {links.map((link, index) => (
             <NavLink
@@ -72,7 +72,7 @@ const Navbar = () => {
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-center gap-4 md:gap-7">
+      <div className="flex items-center justify-center gap-4 lg:gap-7">
         <img loading="lazy" src={search} className="w-6" alt="" />
         <img loading="lazy" src={account} className="w-6" alt="" />
 
@@ -85,7 +85,7 @@ const Navbar = () => {
 
         <div
           onClick={() => setOpen(!open)}
-          className="w-8 h-6 flex items-center md:hidden justify-center"
+          className="w-8 h-6 flex items-center lg:hidden justify-center"
         >
           <div
             key={open ? "menu" : "cross"} // force re-render on toggle
@@ -111,7 +111,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`w-full z-[999999] md:hidden bg-[#EEE8E6] text-gray-700 hover:text-black flex flex-col ${
+        className={`w-full z-[999999] lg:hidden bg-[#EEE8E6] text-gray-700 hover:text-black flex flex-col ${
           open ? "max-h-60" : "max-h-0"
         } overflow-hidden transition-all duration-300 top-16 absolute`}
       >

@@ -302,7 +302,6 @@ export const AllContextProvider = ({ children }) => {
     if (savedCart) {
       setCartItems(JSON.parse(savedCart));
     }
-
     // Load orders from localStorage
     const savedOrders = localStorage.getItem("orders");
     if (savedOrders) {
